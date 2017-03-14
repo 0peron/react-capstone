@@ -1,4 +1,7 @@
 {
+  "name": "react-capstone",
+  "version": "1.0.0",
+  "description": "Steam news and achievements",
   "main": "js/index.js",
   "scripts": {
     "start": "http-server -c-1 build",
@@ -34,6 +37,8 @@
     "watch:assets": "run-s build:assets _watch:assets",
     "_watch:assets": "chokidar assets/**/* -c \"npm run build:assets\""
   },
+  "author": "Patrick Hubbard",
+  "license": "ICS",
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babel-loader": "^6.2.4",
