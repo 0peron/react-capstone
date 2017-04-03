@@ -1,0 +1,80 @@
+var actions = require('../actions/index');
+
+var initialgameIdState = [];
+
+var gameIdReducer = function(state, action) {
+    state = state || initialgameIdState;
+    if (action.type === actions.ADD_ID) {
+        return state.concat({
+            name: action.gameId
+        });
+    }
+    // else if (action.type === actions.RATE_gameId) {
+    //     // Find the index of the matching gameId
+    //     var index = -1;
+    //     for (var i=0; i<state.length; i++) {
+    //          var gameId = state[i];
+    //         if (gameId.name === action.gameId) {
+    //             index = i;
+    //             break;
+    //         }
+    //     }
+
+    //     if (index === -1) {
+    //         throw new Error('Could not find gameId');
+    //     }
+
+    //     var before = state.slice(0, i);
+    //     var after = state.slice(i + 1);
+    //     var newgameId = Object.assign({}, gameId, {rating: action.rating});
+    //     return before.concat(newgameId, after);
+    // } 
+    else if (action.type === actions.FETCH_ID_SUCCESS) {
+        // Find the index of the matching gameId
+        var index = -1;
+        for (var i=0; i<state.length; i++) {
+            var fetchIdState = state[i];
+            if (fetchIdState.name === action.gameId) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index === -1) {
+            throw new Error('Could not find gameId');
+        }
+
+        var before = state.slice(0, i);
+        var after = state.slice(i + 1);
+        var newgameId = Object.assign({}, gameId, {
+            description: action.description || 'N/A'
+        });
+        return before.concat(newgameId, after);
+    }
+    else if (action.type === actions.FETCH_ID_ERROR) {
+        // Find the index of the matching gameId
+        var index = -1;
+        for (var i=0; i<state.length; i++) {
+            var gameId = state[i];
+            if (gameId.applist.apps.name === action.gameId) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index === -1) {
+            throw new Error('Could not find gameId');
+        }
+
+        var before = state.slice(0, i);
+        var after = state.slice(i + 1);
+        var newgameId = Object.assign({}, gameId, {
+            description: 'N/A'
+        });
+        return before.concat(newgameId, after);
+    }
+
+    return state;
+};
+
+exports.gameIdReducer = gameIdReducer;

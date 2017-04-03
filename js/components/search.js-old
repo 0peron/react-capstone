@@ -1,0 +1,28 @@
+var React = require('react');
+
+var connect = require('react-redux').connect;
+
+var actions = require('../actions/index');
+
+var GetId = React.createClass({
+    componentDidMount: function() {
+        this.props.dispatch(
+            actions.fetchId(this.props.gameId.name)
+        );
+        console.log('actions', this.props.gameId);
+    },
+    render: function() {
+        console.log('this props render', this.props);
+        return (
+            <div className="gameSearch">
+                <p> this is where search goes </p>
+            </div>
+        );
+    }
+});
+
+module.exports = GetId;
+
+var Container = connect()(GetId);
+
+module.exports = Container;
