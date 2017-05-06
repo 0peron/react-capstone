@@ -26,7 +26,7 @@ var addId = function(stateName, cityName) {
 };
 
 var fetchId = function(stateName, cityName) {
-    // console.log('hello');
+    console.log('hello');
     return function(dispatch) {
         var apiKey = '070d4f7d9e1206a5';
         var query = (stateName + "/" + cityName);
@@ -38,7 +38,7 @@ var fetchId = function(stateName, cityName) {
                 dataType: "json"
             })
             .then(function(response) {
-                // console.log("first then", response);
+                console.log("first then", response);
                 // fetch.fetchUrl(url [, options], callback)
                 if (response.status < 200 || response.status >= 300) {
                     var error = new Error(response.statusText);
@@ -48,11 +48,11 @@ var fetchId = function(stateName, cityName) {
                 return response;
             })
             .then(function(response) {
-                // console.log("second then", response);
+                console.log("second then", response);
                 return response.json();
             })
             .then(function(data) {
-                // console.log("third then", data);
+                console.log("third then", data);
                 var forecast = data.forecast.simpleforecast.forecastday;
                 console.log('this is forecast', forecast, cityName);
                 return dispatch(
@@ -90,7 +90,6 @@ var fetchIdError = function(cityName, error) {
 
 //reducer
 var initialWeatherState = {
-    cityName: 'mobile',
     forecast: []
 };
 
@@ -114,8 +113,6 @@ var cityReducer = function(state, action) {
     }
     else if (action.type === FETCH_ID_ERROR) {
         console.log('inside error');
-        var before = state.slice(0, i);
-        var after = state.slice(i + 1);
         var newCityName = Object.assign({}, state, {
             forecast: action.forecast || 'N/A'
         });
