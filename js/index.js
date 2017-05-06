@@ -13,6 +13,8 @@ var createStore = redux.createStore;
 var applyMiddleware = redux.applyMiddleware;
 var thunk = require('redux-thunk').default;
 
+var connect = require('react-redux').connect
+
 //actions
 var ADD_ID = 'ADD_ID';
 var addId = function(stateName, cityName) {
@@ -24,7 +26,7 @@ var addId = function(stateName, cityName) {
 };
 
 var fetchId = function(stateName, cityName) {
-    console.log('hello');
+    // console.log('hello');
     return function(dispatch) {
         var apiKey = '070d4f7d9e1206a5';
         var query = (stateName + "/" + cityName);
@@ -36,7 +38,7 @@ var fetchId = function(stateName, cityName) {
                 dataType: "json"
             })
             .then(function(response) {
-                console.log("first then", response);
+                // console.log("first then", response);
                 // fetch.fetchUrl(url [, options], callback)
                 if (response.status < 200 || response.status >= 300) {
                     var error = new Error(response.statusText);
@@ -46,43 +48,40 @@ var fetchId = function(stateName, cityName) {
                 return response;
             })
             .then(function(response) {
-                console.log("second then", response);
+                // console.log("second then", response);
                 return response.json();
             })
             .then(function(data) {
-                console.log("third then", data);
-                var description = data.description;
+                // console.log("third then", data);
+                var forecast = data.forecast.simpleforecast.forecastday;
+                console.log('this is forecast', forecast, cityName);
                 return dispatch(
-                    fetchIdSuccess(stateName, cityName, description)
+                    fetchIdSuccess(cityName, forecast)
                 );
             })
             .catch(function(error) {
                 console.log('catch', error);
                 return dispatch(
-                    fetchIdError(stateName, cityName, error)
+                    fetchIdError(cityName, error)
                 );
             });
     };
 };
 
 var FETCH_ID_SUCCESS = 'FETCH_ID_SUCCESS';
-var fetchIdSuccess = function(stateName, cityName, description) {
+var fetchIdSuccess = function(cityName, forecast) {
     return {
         type: FETCH_ID_SUCCESS,
-        stateName,
-        cityName: stateName,
-        cityName,
-        description: description
+        cityName: cityName,
+        forecast: forecast
     };
 };
 
 var FETCH_ID_ERROR = 'FETCH_ID_ERROR';
-var fetchIdError = function(stateName, cityName, error) {
+var fetchIdError = function(cityName, error) {
     return {
         type: FETCH_ID_ERROR,
-        stateName,
-        cityName: stateName,
-        cityName,
+        cityName: cityName,
         error: error
     };
 };
@@ -90,95 +89,47 @@ var fetchIdError = function(stateName, cityName, error) {
 
 
 //reducer
-var initialWeatherState= [];
+var initialWeatherState = {
+    forecast: []
+};
 
 var cityReducer = function(state, action) {
     state = state || initialWeatherState;
-    // console.log(state);
     if (action.type === ADD_ID) {
         return state.concat({
             cityName: action.cityName,
-            stateName: action.stateName
+            forecast: action.forecast
         });
     }
-       else if (action.type === stateName) {
-        // Find the index of the matching repository
-        var index = -1;
-        for (var i=0; i<state.length; i++) {
-            var fetchIdState = state[i];
-            if (fetchIdState.stateName === action.fetchIdState) {
-                index = i;
-                break;
-            }
-        }
-
-        if (index === -1) {
-            throw new Error('Could not find repository');
-        }
-
-        var before = state.slice(0, i);
-        var after = state.slice(i + 1);
-        var newFetchIdState = Object.assign({}, fetchIdState, {stateName: action.stateName});
-        return before.concat(newFetchIdState, after);
-    } 
     else if (action.type === FETCH_ID_SUCCESS) {
-        // Find the index of the matching stateName, cityName
-        var index = -1;
-        for (var i = 0; i < state.length; i++) {
-            var fetchIdState = state[i];
-            console.log(fetchIdState);
-            if (fetchIdState.cityName === action.cityName) {
-                index = i;
-                break;
-            }
-        }
-
-        if (index === -1) {
-            throw new Error('Error line 116');
-        }
-
-        var before = state.slice(0, i);
-        var after = state.slice(i + 1);
-        var newCityName = Object.assign({}, action.cityName, {
-            description: action.description || 'N/A'
+        console.log('inside success');
+        state = Object.assign({}, state, {
+            cityName: action.cityName,
+            forecast: action.forecast
         });
-        return before.concat(newCityName, after);
+        console.log(state);
+        return state;
+
     }
     else if (action.type === FETCH_ID_ERROR) {
-        // Find the index of the matching stateName, cityName
-        var index = -1;
-        for (var i = 0; i < state.length; i++) {
-            var fetchIdState = state[i];
-            if (fetchIdState.cityName === action.cityName) {
-                index = i;
-                break;
-            }
-        }
-
-        if (index === -1) {
-            throw new Error('Error line 139');
-        }
-
-        var before = state.slice(0, i);
-        var after = state.slice(i + 1);
-        var newCityName = Object.assign({}, action.cityName, {
-            description: action.description || 'N/A'
+        console.log('inside error');
+        var newCityName = Object.assign({}, state, {
+            forecast: action.forecast || 'N/A'
         });
         return before.concat(newCityName, after);
     }
-
     return state;
 };
 
 //store
-var store = createStore(cityReducer(state, action), applyMiddleware(thunk));
+var store = createStore(cityReducer, applyMiddleware(thunk));
 
 //component
 var GetId = React.createClass({
     componentDidMount: function() {
         // console.log("componentDidMount cityname", this.props.cityName);
         // console.log("componentDidMount stateName", this.props.stateName);
-        if(this.props.cityName != undefined && this.props.stateName != undefined) {
+        if (this.props.cityName != undefined && this.props.stateName != undefined) {
             store.dispatch(
                 fetchId(this.props.cityName, this.props.stateName)
             );
@@ -192,7 +143,7 @@ var GetId = React.createClass({
         var cityNameMod = cityName.replace(/\s/g, "_");
         // console.log(cityNameMod);
         // TODO: Add the repository to the state
-        if(cityName != undefined && stateName != undefined) {
+        if (cityName != undefined && stateName != undefined) {
             store.dispatch(
                 fetchId(stateName, cityName)
             );
@@ -204,13 +155,14 @@ var GetId = React.createClass({
     },
     searchCount: function() {
         var countClicks = 0;
-            countClicks++;
-            this.refs.forecastSearch.onClick = countClicks;
+        countClicks++;
+        this.refs.forecastSearch.onClick = countClicks;
         if (countClicks == 0) {
             return fetchId();
         }
     },
     render: function() {
+        console.log(this.state);
         return (
             <div className="weatherSearch">
                 <form action="#" className="js-search-form">
@@ -271,11 +223,17 @@ var GetId = React.createClass({
                     <input type="text" className="js-query" placeholder="City" ref="cityName" />
                     <button type="submit" ref="forecastSearch" className="forecastSearch" onClick={this.addCityName}>Search</button>
                 </form>
-                
+                <div className="show-results">
+                {this.props.cityName} - {this.props.forecast}
+                </div>
             </div>
         );
     }
 });
+
+GetId = connect(state => ({
+    forecast: state.forecast
+}))(GetId);
 
 document.addEventListener('DOMContentLoaded', function() {
     ReactDOM.render(
