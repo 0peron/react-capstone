@@ -38,7 +38,6 @@ var fetchId = function(stateName, cityName) {
                 dataType: "json"
             })
             .then(function(response) {
-                console.log("first then", response);
                 // fetch.fetchUrl(url [, options], callback)
                 if (response.status < 200 || response.status >= 300) {
                     var error = new Error(response.statusText);
@@ -48,7 +47,6 @@ var fetchId = function(stateName, cityName) {
                 return response;
             })
             .then(function(response) {
-                console.log("second then", response);
                 return response.json();
             })
             .then(function(data) {
@@ -231,9 +229,16 @@ var GetId = React.createClass({
     }
 });
 
-GetId = connect(state => ({
-    forecast: state.forecast
-}))(GetId);
+GetId = connect(function (state) {
+    console.log('getid state =', state);
+    return {
+        forecast: state.forecast
+    };
+})(GetId);
+
+// GetId = connect(state => ({
+//     forecast: state.forecast
+// }))(GetId);
 
 document.addEventListener('DOMContentLoaded', function() {
     ReactDOM.render(
