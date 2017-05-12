@@ -13,7 +13,7 @@ var createStore = redux.createStore;
 var applyMiddleware = redux.applyMiddleware;
 var thunk = require('redux-thunk').default;
 
-var connect = require('react-redux').connect
+var connect = require('react-redux').connect;
 
 //actions
 var ADD_ID = 'ADD_ID';
@@ -26,7 +26,6 @@ var addId = function(stateName, cityName) {
 };
 
 var fetchId = function(stateName, cityName) {
-    console.log('hello');
     return function(dispatch) {
         var apiKey = '070d4f7d9e1206a5';
         var query = (stateName + "/" + cityName);
@@ -50,9 +49,9 @@ var fetchId = function(stateName, cityName) {
                 return response.json();
             })
             .then(function(data) {
-                console.log("third then", data);
+                //console.log("third then", data);
                 var forecast = data.forecast.simpleforecast.forecastday;
-                console.log('this is forecast', forecast, cityName);
+                //console.log('this is forecast', forecast, cityName);
                 return dispatch(
                     fetchIdSuccess(cityName, forecast)
                 );
@@ -68,6 +67,7 @@ var fetchId = function(stateName, cityName) {
 
 var FETCH_ID_SUCCESS = 'FETCH_ID_SUCCESS';
 var fetchIdSuccess = function(cityName, forecast) {
+    
     return {
         type: FETCH_ID_SUCCESS,
         cityName: cityName,
@@ -100,12 +100,12 @@ var cityReducer = function(state, action) {
         });
     }
     else if (action.type === FETCH_ID_SUCCESS) {
-        console.log('inside success');
+        
         state = Object.assign({}, state, {
             cityName: action.cityName,
             forecast: action.forecast
         });
-        console.log(state);
+        console.log('->>>', state);
         return state;
 
     }
@@ -116,7 +116,9 @@ var cityReducer = function(state, action) {
         });
         return before.concat(newCityName, after);
     }
-    return state;
+    else{
+        return state;
+    }
 };
 
 //store
@@ -127,6 +129,7 @@ var GetId = React.createClass({
     componentDidMount: function() {
         // console.log("componentDidMount cityname", this.props.cityName);
         // console.log("componentDidMount stateName", this.props.stateName);
+        // console.log("componentDidMount state", this.state);
         if (this.props.cityName != undefined && this.props.stateName != undefined) {
             store.dispatch(
                 fetchId(this.props.cityName, this.props.stateName)
@@ -160,7 +163,18 @@ var GetId = React.createClass({
         }
     },
     render: function() {
-        console.log(this.state);
+        
+        //validating the this.state before output
+        var conditions = '';
+        var fahrenheit = "";
+        var icon_url = "https://cdn3.iconfinder.com/data/icons/weather-season/512/cloud-2-512.png";
+        console.log('render my state = ', this.props);
+        if (this.props.forecast.length != 0 && this.props != null ){
+            conditions = this.props.forecast[0].conditions;
+            fahrenheit = this.props.forecast[0].high.fahrenheit;
+            icon_url = this.props.forecast[0].icon_url;
+        }
+        
         return (
             <div className="weatherSearch">
                 <form action="#" className="js-search-form">
@@ -218,11 +232,12 @@ var GetId = React.createClass({
                     	<option value="WI">Wisconsin</option>
                     	<option value="WY">Wyoming</option>
                     </select>
-                    <input type="text" className="js-query" placeholder="City" ref="cityName" />
+                    <input type="text" className="js-query" placeholder="City" ref="cityName" value="mobile" />
                     <button type="submit" ref="forecastSearch" className="forecastSearch" onClick={this.addCityName}>Search</button>
                 </form>
                 <div className="show-results">
-                {this.props.cityName} - {this.props.forecast}
+                <p>conditions: {conditions} <img src={icon_url} /></p>
+                <p>F Temp: {fahrenheit}</p>
                 </div>
             </div>
         );
