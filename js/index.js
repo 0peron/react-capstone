@@ -214,7 +214,7 @@ var GetId = React.createClass({
             pop1 =  this.props.forecast[1].pop;
             windDirection1 = this.props.forecast[1].avewind.direction;
             windMph1 = this.props.forecast[1].avewind.mph;
-            day1 = this.props.forecast[1].date.weekday
+            day1 = this.props.forecast[1].date.weekday;
             conditions2 = this.props.forecast[2].conditions;
             high2 = this.props.forecast[2].high.fahrenheit;
             low2 = this.props.forecast[2].low.fahrenheit;
@@ -222,6 +222,7 @@ var GetId = React.createClass({
             pop2 =  this.props.forecast[2].pop;
             windDirection2 = this.props.forecast[2].avewind.direction;
             windMph2 = this.props.forecast[2].avewind.mph;
+            day2 = this.props.forecast[2].date.weekday;
             conditions3 = this.props.forecast[3].conditions;
             high3 = this.props.forecast[3].high.fahrenheit;
             low3= this.props.forecast[3].low.fahrenheit;
@@ -229,6 +230,7 @@ var GetId = React.createClass({
             pop3 =  this.props.forecast[3].pop;
             windDirection3 = this.props.forecast[3].avewind.direction;
             windMph3 = this.props.forecast[3].avewind.mph;
+            day3 = this.props.forecast[3].date.weekday;
         }
         
         return (
