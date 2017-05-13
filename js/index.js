@@ -158,21 +158,77 @@ var GetId = React.createClass({
         var countClicks = 0;
         countClicks++;
         this.refs.forecastSearch.onClick = countClicks;
-        if (countClicks == 0) {
+        if (countClicks == 1) {
             return fetchId();
         }
     },
     render: function() {
         
         //validating the this.state before output
-        var conditions = '';
-        var fahrenheit = "";
-        var icon_url = "https://cdn3.iconfinder.com/data/icons/weather-season/512/cloud-2-512.png";
+        var conditions0 = "";
+        var high0 = "";
+        var low0 = "";
+        var icon_url0 = "https://cdn3.iconfinder.com/data/icons/weather-season/512/cloud-2-512.png";
+        var date = "";
+        var pop0 = "";
+        var windDirection0 = "";
+        var windMph0 = "";
+        var conditions1 = "";
+        var high1 = "";
+        var low1 = "";
+        var icon_url1 = "https://cdn3.iconfinder.com/data/icons/weather-season/512/cloud-2-512.png";
+        var pop1 = "";
+        var windDirection1 = "";
+        var windMph1 = "";
+        var day1 = "";
+        var conditions2 = "";
+        var high2 = "";
+        var low2 = "";
+        var icon_url2 = "https://cdn3.iconfinder.com/data/icons/weather-season/512/cloud-2-512.png";
+        var pop2 = "";
+        var windDirection2 = "";
+        var windMph2 = "";
+        var day2 = "";
+        var conditions3 = "";
+        var high3 = "";
+        var low3 = "";
+        var icon_url3 = "https://cdn3.iconfinder.com/data/icons/weather-season/512/cloud-2-512.png";
+        var pop3 = "";
+        var windDirection3 ="";
+        var windMph3 = "";
+        var day3 ="";
         console.log('render my state = ', this.props);
         if (this.props.forecast.length != 0 && this.props != null ){
-            conditions = this.props.forecast[0].conditions;
-            fahrenheit = this.props.forecast[0].high.fahrenheit;
-            icon_url = this.props.forecast[0].icon_url;
+            conditions0 = this.props.forecast[0].conditions;
+            high0 = this.props.forecast[0].high.fahrenheit;
+            low0= this.props.forecast[0].low.fahrenheit;
+            icon_url0 = this.props.forecast[0].icon_url;
+            date = this.props.forecast[0].date.pretty;
+            pop0 =  this.props.forecast[0].pop;
+            windDirection0 = this.props.forecast[0].avewind.direction;
+            windMph0 = this.props.forecast[0].avewind.mph;
+            conditions1 = this.props.forecast[1].conditions;
+            high1 = this.props.forecast[1].high.fahrenheit;
+            low1= this.props.forecast[1].low.fahrenheit;
+            icon_url1 = this.props.forecast[1].icon_url;
+            pop1 =  this.props.forecast[1].pop;
+            windDirection1 = this.props.forecast[1].avewind.direction;
+            windMph1 = this.props.forecast[1].avewind.mph;
+            day1 = this.props.forecast[1].date.weekday
+            conditions2 = this.props.forecast[2].conditions;
+            high2 = this.props.forecast[2].high.fahrenheit;
+            low2 = this.props.forecast[2].low.fahrenheit;
+            icon_url2 = this.props.forecast[2].icon_url;
+            pop2 =  this.props.forecast[2].pop;
+            windDirection2 = this.props.forecast[2].avewind.direction;
+            windMph2 = this.props.forecast[2].avewind.mph;
+            conditions3 = this.props.forecast[3].conditions;
+            high3 = this.props.forecast[3].high.fahrenheit;
+            low3= this.props.forecast[3].low.fahrenheit;
+            icon_url3 = this.props.forecast[3].icon_url;
+            pop3 =  this.props.forecast[3].pop;
+            windDirection3 = this.props.forecast[3].avewind.direction;
+            windMph3 = this.props.forecast[3].avewind.mph;
         }
         
         return (
@@ -232,12 +288,41 @@ var GetId = React.createClass({
                     	<option value="WI">Wisconsin</option>
                     	<option value="WY">Wyoming</option>
                     </select>
-                    <input type="text" className="js-query" placeholder="City" ref="cityName" value="mobile" />
+                    <input type="text" className="js-query" placeholder="City" ref="cityName"/>
                     <button type="submit" ref="forecastSearch" className="forecastSearch" onClick={this.addCityName}>Search</button>
                 </form>
                 <div className="show-results">
-                <p>conditions: {conditions} <img src={icon_url} /></p>
-                <p>F Temp: {fahrenheit}</p>
+                    <div className="currentWeather">
+                        <h3 className="location">Current Weather for </h3>
+                        <p>As of {date}</p>
+                        <p>{conditions0} <img src={icon_url0}/></p>
+                        <p>H: {high0} L: {low0}</p>
+                        <p> chance of rain: {pop0}%</p>
+                        <p> Wind: {windDirection0} {windMph0} mph</p>
+                    </div>
+                    <div className="threeDayContainer">
+                        <div classname="dayOne">
+                            <h4>{day1}</h4>
+                            <p>{conditions1} <img src={icon_url1}/></p>
+                            <p>H: {high1} L: {low1}</p>
+                            <p> chance of rain: {pop1}%</p>
+                            <p> Wind: {windDirection1} {windMph1} mph</p>
+                        </div>
+                        <div classname="dayTwo">
+                            <h4>{day2}</h4>
+                            <p>{conditions2} <img src={icon_url2}/></p>
+                            <p>H: {high2} L: {low2}</p>
+                            <p> chance of rain: {pop2}%</p>
+                            <p> Wind: {windDirection2} {windMph2} mph</p>
+                        </div>
+                        <div classname="dayThree">
+                            <h4>{day3}</h4>
+                            <p>{conditions3} <img src={icon_url3}/></p>
+                            <p>H: {high3} L: {low3}</p>
+                            <p> chance of rain: {pop3}%</p>
+                            <p> Wind: {windDirection3} {windMph3} mph</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
