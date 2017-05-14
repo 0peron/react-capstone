@@ -1,0 +1,121 @@
+body {
+    background-image: url(clouds.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Verdana;
+}
+
+.weatherSearch {
+}
+
+.weatherSearch form {
+    display: block;
+    text-align: center;
+    margin-top: 100px;
+    margin: auto;
+    width: 20%;
+    height: 350px;
+    background-color: white;
+    padding: 10px 0px;
+    -webkit-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+}
+
+.weatherSearch select {
+    display: block;
+    margin: auto;
+    width: 205px;
+    margin-bottom: 10px;
+    height: 40px;
+    font-size: larger;
+    margin-top: 2px;
+}
+
+.weatherSearch input {
+    display: block;
+    margin: auto;
+    width: 200px;
+    margin-bottom: 30px;
+    height: 40px;
+    font-size: larger;
+}
+
+.weatherSearch form button {
+    display: block;
+    margin: auto;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.show-results {
+    width: 100%;
+    text-align: center;
+}
+
+.currentWeather {
+    width: 20%;
+    text-align: center;
+    margin-left: 40%;
+    margin-top: 50px;
+    margin-bottom: 2%;
+    background-color: white;
+    height: 350px;
+    padding: 10px 0px;
+    -webkit-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+}
+
+.threeDayContainer {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.threeDayContainer .dayOne {
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+    background-color: white;
+    padding: 10px 0px;
+    -webkit-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    
+}
+
+.threeDayContainer .dayTwo {
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: white;
+    padding: 10px 0px;
+    -webkit-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    
+}
+
+.threeDayContainer .dayThree {
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+    background-color: white;
+    padding: 10px 0px;
+    -webkit-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+}
+
+img {
+    width: 50px;
+    display: block;
+    margin: auto;
+}

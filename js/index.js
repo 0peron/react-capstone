@@ -205,14 +205,14 @@ var GetId = React.createClass({
             icon_url0 = this.props.forecast[0].icon_url;
             date = this.props.forecast[0].date.pretty;
             pop0 =  this.props.forecast[0].pop;
-            windDirection0 = this.props.forecast[0].avewind.direction;
+            windDirection0 = this.props.forecast[0].avewind.dir;
             windMph0 = this.props.forecast[0].avewind.mph;
             conditions1 = this.props.forecast[1].conditions;
             high1 = this.props.forecast[1].high.fahrenheit;
             low1= this.props.forecast[1].low.fahrenheit;
             icon_url1 = this.props.forecast[1].icon_url;
             pop1 =  this.props.forecast[1].pop;
-            windDirection1 = this.props.forecast[1].avewind.direction;
+            windDirection1 = this.props.forecast[1].avewind.dir;
             windMph1 = this.props.forecast[1].avewind.mph;
             day1 = this.props.forecast[1].date.weekday;
             conditions2 = this.props.forecast[2].conditions;
@@ -220,7 +220,7 @@ var GetId = React.createClass({
             low2 = this.props.forecast[2].low.fahrenheit;
             icon_url2 = this.props.forecast[2].icon_url;
             pop2 =  this.props.forecast[2].pop;
-            windDirection2 = this.props.forecast[2].avewind.direction;
+            windDirection2 = this.props.forecast[2].avewind.dir;
             windMph2 = this.props.forecast[2].avewind.mph;
             day2 = this.props.forecast[2].date.weekday;
             conditions3 = this.props.forecast[3].conditions;
@@ -228,7 +228,7 @@ var GetId = React.createClass({
             low3= this.props.forecast[3].low.fahrenheit;
             icon_url3 = this.props.forecast[3].icon_url;
             pop3 =  this.props.forecast[3].pop;
-            windDirection3 = this.props.forecast[3].avewind.direction;
+            windDirection3 = this.props.forecast[3].avewind.dir;
             windMph3 = this.props.forecast[3].avewind.mph;
             day3 = this.props.forecast[3].date.weekday;
         }
@@ -236,6 +236,8 @@ var GetId = React.createClass({
         return (
             <div className="weatherSearch">
                 <form action="#" className="js-search-form">
+                    <h1>WeatherCheck</h1>
+                    <h4>Select State and City</h4>
                     <label form="query"></label>
                     <select ref="stateName">
                     	<option value="AL">Alabama</option>
@@ -295,31 +297,32 @@ var GetId = React.createClass({
                 </form>
                 <div className="show-results">
                     <div className="currentWeather">
-                        <h3 className="location">Current Weather for </h3>
+                        <h3 className="location">Current Weather</h3>
                         <p>As of {date}</p>
-                        <p>{conditions0} <img src={icon_url0}/></p>
+                        <h4>Today</h4>
+                        <p><img src={icon_url0}/> {conditions0}</p>
                         <p>H: {high0} L: {low0}</p>
                         <p> chance of rain: {pop0}%</p>
                         <p> Wind: {windDirection0} {windMph0} mph</p>
                     </div>
                     <div className="threeDayContainer">
-                        <div classname="dayOne">
+                        <div className="dayOne">
                             <h4>{day1}</h4>
-                            <p>{conditions1} <img src={icon_url1}/></p>
+                            <p><img src={icon_url1}/> {conditions1}</p>
                             <p>H: {high1} L: {low1}</p>
                             <p> chance of rain: {pop1}%</p>
                             <p> Wind: {windDirection1} {windMph1} mph</p>
                         </div>
-                        <div classname="dayTwo">
+                        <div className="dayTwo">
                             <h4>{day2}</h4>
-                            <p>{conditions2} <img src={icon_url2}/></p>
+                            <p><img src={icon_url2}/> {conditions2}</p>
                             <p>H: {high2} L: {low2}</p>
                             <p> chance of rain: {pop2}%</p>
                             <p> Wind: {windDirection2} {windMph2} mph</p>
                         </div>
-                        <div classname="dayThree">
+                        <div className="dayThree">
                             <h4>{day3}</h4>
-                            <p>{conditions3} <img src={icon_url3}/></p>
+                            <p><img src={icon_url3}/> {conditions3}</p>
                             <p>H: {high3} L: {low3}</p>
                             <p> chance of rain: {pop3}%</p>
                             <p> Wind: {windDirection3} {windMph3} mph</p>
@@ -337,10 +340,6 @@ GetId = connect(function (state) {
         forecast: state.forecast
     };
 })(GetId);
-
-// GetId = connect(state => ({
-//     forecast: state.forecast
-// }))(GetId);
 
 document.addEventListener('DOMContentLoaded', function() {
     ReactDOM.render(
