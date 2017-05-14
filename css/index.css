@@ -119,3 +119,20 @@ img {
     display: block;
     margin: auto;
 }
+
+@media only screen and (max-width: 600px) {
+    .weatherSearch form {
+        width: 100%;
+    }
+    
+    .currentWeather {
+        width:100%;
+        margin-left: 0%;
+    }
+    
+    .threeDayContainer {
+      width: 100%;  
+      margin-left: 0%;
+      margin-right: 0%;
+    }
+}

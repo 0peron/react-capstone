@@ -158,7 +158,7 @@ var GetId = React.createClass({
         var countClicks = 0;
         countClicks++;
         this.refs.forecastSearch.onClick = countClicks;
-        if (countClicks == 1) {
+        if (countClicks == 0) {
             return fetchId();
         }
     },
