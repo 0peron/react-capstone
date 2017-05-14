@@ -127,9 +127,12 @@ img {
     
     .currentWeather {
         width:100%;
+        margin-left: 0%;
     }
     
     .threeDayContainer {
-      width: 100%  
+      width: 100%;  
+      margin-left: 0%;
+      margin-right: 0%;
     }
 }
