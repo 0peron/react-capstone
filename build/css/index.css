@@ -5,8 +5,7 @@ body {
     font-family: Verdana;
 }
 
-.weatherSearch {
-}
+.weatherSearch {}
 
 .weatherSearch form {
     display: block;
@@ -17,9 +16,9 @@ body {
     height: 350px;
     background-color: white;
     padding: 10px 0px;
-    -webkit-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
-    box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
 .weatherSearch select {
@@ -51,6 +50,11 @@ body {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
+    cursor: pointer;
+}
+
+.weatherSearch form button:active {
+    background-color: darkgreen;
 }
 
 .show-results {
@@ -67,9 +71,9 @@ body {
     background-color: white;
     height: 350px;
     padding: 10px 0px;
-    -webkit-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
-    box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
 .threeDayContainer {
@@ -83,10 +87,9 @@ body {
     width: 30%;
     background-color: white;
     padding: 10px 0px;
-    -webkit-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
-    box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
-    
+    -webkit-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
 .threeDayContainer .dayTwo {
@@ -97,10 +100,9 @@ body {
     margin-right: 2%;
     background-color: white;
     padding: 10px 0px;
-    -webkit-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
-    box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
-    
+    -webkit-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
 .threeDayContainer .dayThree {
@@ -109,9 +111,9 @@ body {
     width: 30%;
     background-color: white;
     padding: 10px 0px;
-    -webkit-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
-    box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
 img {
@@ -120,19 +122,17 @@ img {
     margin: auto;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     .weatherSearch form {
         width: 100%;
     }
-    
     .currentWeather {
-        width:100%;
+        width: 100%;
         margin-left: 0%;
     }
-    
     .threeDayContainer {
-      width: 100%;  
-      margin-left: 0%;
-      margin-right: 0%;
+        width: 100%;
+        margin-left: 0%;
+        margin-right: 0%;
     }
 }

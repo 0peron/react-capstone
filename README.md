@@ -1,3 +1,3 @@
-# React Capstone
+# React Capstone - WeatherCheck
 
 
