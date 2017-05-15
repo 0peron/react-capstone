@@ -86,10 +86,11 @@ body {
     text-align: center;
     width: 30%;
     background-color: white;
-    padding: 10px 0px;
+    padding: 10px 3px;
     -webkit-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
     box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    vertical-align: top;
 }
 
 .threeDayContainer .dayTwo {
@@ -99,10 +100,11 @@ body {
     margin-left: 2%;
     margin-right: 2%;
     background-color: white;
-    padding: 10px 0px;
+    padding: 10px 3px;
     -webkit-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
     box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    vertical-align: top;
 }
 
 .threeDayContainer .dayThree {
@@ -110,10 +112,11 @@ body {
     text-align: center;
     width: 30%;
     background-color: white;
-    padding: 10px 0px;
+    padding: 10px 3px;
     -webkit-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
     box-shadow: 6px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    vertical-align: top;
 }
 
 img {

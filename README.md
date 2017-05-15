@@ -1,4 +1,4 @@
-# React Capstone - WeatherCheck
+# React Capstone - Weather Check
 Thinkful (https://www.thinkful.com/) React portfolio project - a responsive app to search for 4 day weather forecast in a city in the USA.
 
 ## Introduction
@@ -20,7 +20,7 @@ This apps functionality includes:
 ![screenshot](https://github.com/0peron/react-capstone/blob/master/weathercheckresults.png)
 
 ## Live Site
-You can access WeatherCheck at: (https://.com/)
+You can access Weather Check at: (https://0peron.github.io/react-capstone/build/)
 
 ## Technical
  * The front-end is built using HTML5, CSS3 and react, redux.
