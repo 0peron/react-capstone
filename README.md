@@ -14,10 +14,10 @@ This app gives users a small compartmentalized package of the critical informati
 This apps functionality includes: 
 
 * A comprehensive search that allows users to search for the current weather in any city in the USA.
-![screenshot](https://.png)
+![screenshot](https://github.com/0peron/react-capstone/blob/master/weatherchecksearch.png)
 * A Description of up to 4 days worth of weather data.
 * Shows high and low temperatures, weather conditions, chance of rain and wind discription as well as a thumbnail of the forecasted conditions.
-![screenshot](https://.png)
+![screenshot](https://github.com/0peron/react-capstone/blob/master/weathercheckresults.png)
 
 ## Live Site
 You can access WeatherCheck at: (https://.com/)
