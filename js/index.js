@@ -236,7 +236,7 @@ var GetId = React.createClass({
         return (
             <div className="weatherSearch">
                 <form action="#" className="js-search-form">
-                    <h1>WeatherCheck</h1>
+                    <h1>Weather Check</h1>
                     <h4>Select State and City</h4>
                     <label form="query"></label>
                     <select ref="stateName">
