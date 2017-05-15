@@ -2,11 +2,11 @@
 Thinkful (https://www.thinkful.com/) React portfolio project - a responsive app to search for 4 day weather forecast in a city in the USA.
 
 ## Introduction
-WeatherCHeck allows you to search the wunderground weather api for a simple forecast in the city queryed.
+Weather Check allows you to search the wunderground weather api for a simple forecast in the city queryed.
 You can see the high and low temperatures, the chance of rain as well as wind direction and speed. 
 pictures are also available for quick scanning of information.
 
-## Use Case\
+## Use Case
 This app is useful for users because it provides a quick and easy way to search for weather in any city in the USA.
 This app gives users a small compartmentalized package of the critical information needed to prepare for the weeks weather conditions.
 
